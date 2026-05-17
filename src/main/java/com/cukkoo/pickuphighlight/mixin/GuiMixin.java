@@ -41,6 +41,20 @@ public class GuiMixin {
             pose.scale(scale, scale);
             extractor.text(client.font, "✦", 0, 0, color);
             pose.popMatrix();
+
+            // Draw count badge to the left of the star
+            if (PickupHighlight.config.showCount) {
+                int count = HighlightTracker.getCount(i);
+                if (count > 0) {
+                    String text = "+" + count;
+                    int textWidth = client.font.width(text);
+                    pose.pushMatrix();
+                    pose.translate(slotX + 9 - textWidth * 0.5f, hotbarY + 5);
+                    pose.scale(0.5f, 0.5f);
+                    extractor.text(client.font, text, 0, 0, 0xFFFFFFFF);
+                    pose.popMatrix();
+                }
+            }
         }
     }
 }

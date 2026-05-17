@@ -19,6 +19,7 @@ public class PickupHighlightConfig {
     public boolean clearOnSelect = true;
     public int highlightColor = 0xFFD700;
     public int timeoutSeconds = 0;
+    public boolean showCount = true;
 
     public static PickupHighlightConfig load() {
         try {

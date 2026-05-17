@@ -65,6 +65,14 @@ public class PickupHighlightConfigScreen {
                 .setSaveConsumer(val -> cfg.timeoutSeconds = val)
                 .build());
 
+        general.addEntry(eb.startBooleanToggle(
+                        Component.translatable("pickuphighlight.config.showCount"),
+                        cfg.showCount)
+                .setDefaultValue(true)
+                .setTooltip(Component.translatable("pickuphighlight.config.showCount.tooltip"))
+                .setSaveConsumer(val -> cfg.showCount = val)
+                .build());
+
         builder.setSavingRunnable(cfg::save);
 
         return builder.build();

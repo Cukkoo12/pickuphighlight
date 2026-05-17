@@ -10,5 +10,7 @@
   "pickuphighlight.config.highlightColor": "Highlight Color",
   "pickuphighlight.config.highlightColor.tooltip": "RGB color of the sparkle icon (hex integer, default: 0xFFD700 gold).",
   "pickuphighlight.config.timeoutSeconds": "Timeout (seconds)",
-  "pickuphighlight.config.timeoutSeconds.tooltip": "Automatically clear highlights after this many seconds. 0 = never."
+  "pickuphighlight.config.timeoutSeconds.tooltip": "Automatically clear highlights after this many seconds. 0 = never.",
+  "pickuphighlight.config.showCount": "Show Count Badge",
+  "pickuphighlight.config.showCount.tooltip": "Shows the number of items picked up next to the highlight."
 }

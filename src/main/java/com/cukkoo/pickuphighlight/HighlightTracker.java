@@ -15,6 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class HighlightTracker {
 
     private static final Map<Integer, Long> highlightedSlots = new ConcurrentHashMap<>();
+    private static final Map<Integer, Integer> slotCounts = new ConcurrentHashMap<>();
     private static ItemStack[] previousItems;
     private static int previousSelectedSlot = -1;
     private static Screen previousScreen;
@@ -45,8 +46,31 @@ public class HighlightTracker {
             for (int i = 0; i < size; i++) {
                 ItemStack prev = previousItems[i];
                 ItemStack curr = items.get(i);
-                if (isNewOrIncreased(prev, curr)) {
+                boolean prevEmpty = prev == null || prev.isEmpty();
+                boolean currEmpty = curr == null || curr.isEmpty();
+
+                if (prevEmpty && currEmpty) continue;
+
+                if (prevEmpty) {
+                    // New item appeared
                     highlightedSlots.put(i, System.currentTimeMillis());
+                    slotCounts.merge(i, curr.getCount(), Integer::sum);
+                } else if (currEmpty) {
+                    // Item removed (dropped, used, etc.)
+                    clearSlot(i);
+                } else if (prev.getItem() == curr.getItem()) {
+                    if (curr.getCount() > prev.getCount()) {
+                        // Count increased
+                        highlightedSlots.put(i, System.currentTimeMillis());
+                        int delta = curr.getCount() - prev.getCount();
+                        slotCounts.merge(i, delta, Integer::sum);
+                    } else if (curr.getCount() < prev.getCount()) {
+                        // Count decreased (dropped some)
+                        clearSlot(i);
+                    }
+                } else {
+                    // Item type changed
+                    clearSlot(i);
                 }
             }
         }
@@ -60,19 +84,25 @@ public class HighlightTracker {
                 && previousScreen instanceof AbstractContainerScreen
                 && client.screen == null) {
             highlightedSlots.clear();
+            slotCounts.clear();
         }
 
         // Clear on hotbar slot selection
         int selected = inventory.getSelectedSlot();
         if (cfg.clearOnSelect && selected != previousSelectedSlot) {
             highlightedSlots.remove(selected);
+            slotCounts.remove(selected);
         }
 
         // Clear expired highlights (timeout)
         if (cfg.timeoutSeconds > 0) {
             long now = System.currentTimeMillis();
             long timeoutMs = cfg.timeoutSeconds * 1000L;
-            highlightedSlots.entrySet().removeIf(e -> now - e.getValue() > timeoutMs);
+            highlightedSlots.entrySet().removeIf(e -> {
+                boolean expired = now - e.getValue() > timeoutMs;
+                if (expired) slotCounts.remove(e.getKey());
+                return expired;
+            });
         }
 
         previousSelectedSlot = selected;
@@ -88,21 +118,17 @@ public class HighlightTracker {
         }
     }
 
-    private static boolean isNewOrIncreased(ItemStack prev, ItemStack curr) {
-        boolean prevEmpty = prev == null || prev.isEmpty();
-        boolean currEmpty = curr == null || curr.isEmpty();
-        if (prevEmpty && currEmpty) return false;
-        if (prevEmpty) return true;
-        if (currEmpty) return false;
-        return prev.getItem() == curr.getItem() && curr.getCount() > prev.getCount();
-    }
-
     public static boolean isHighlighted(int slotIndex) {
         return highlightedSlots.containsKey(slotIndex);
     }
 
     public static void clearSlot(int slotIndex) {
         highlightedSlots.remove(slotIndex);
+        slotCounts.remove(slotIndex);
+    }
+
+    public static int getCount(int slotIndex) {
+        return slotCounts.getOrDefault(slotIndex, 0);
     }
 
     public static float getPulseScale(int slotIndex) {
@@ -114,6 +140,7 @@ public class HighlightTracker {
 
     private static void reset() {
         highlightedSlots.clear();
+        slotCounts.clear();
         previousItems = null;
         previousSelectedSlot = -1;
         previousScreen = null;
