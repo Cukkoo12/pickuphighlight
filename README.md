@@ -2,7 +2,7 @@
 
 **Never lose track of newly picked-up items again.** Every new item in your hotbar or inventory gets an animated golden star — plus a count badge showing how many you picked up.
 
-![PickupHighlight Preview](screenshots/preview.gif)
+![PickupHighlight Preview](https://raw.githubusercontent.com/Cukkoo12/pickuphighlight/master/screenshots/preview.gif)
 
 ## Features
 
