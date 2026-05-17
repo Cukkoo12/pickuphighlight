@@ -42,3 +42,4 @@ processResources {
 tasks.named('compileJava') {
     destinationDirectory = file("$buildDir/resources/main")
 }
+

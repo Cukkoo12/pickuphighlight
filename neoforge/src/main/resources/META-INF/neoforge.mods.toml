@@ -1,3 +1,5 @@
+license="MIT License"
+
 [[mods]]
 modId="pickuphighlight"
 version="${version}"
