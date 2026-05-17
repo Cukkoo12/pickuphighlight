@@ -31,12 +31,4 @@ If [Cloth Config](https://modrinth.com/mod/cloth-config) and [Mod Menu](https://
 
 ## License
 
-```bash
-./gradlew build
-```
-
-Built JAR will be in `build/libs/`.
-
-## License
-
 MIT — see [LICENSE](LICENSE)
