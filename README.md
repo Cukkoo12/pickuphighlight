@@ -29,26 +29,6 @@ Config file: `.minecraft/config/pickuphighlight.json`
 
 If [Cloth Config](https://modrinth.com/mod/cloth-config) and [Mod Menu](https://modrinth.com/mod/modmenu) are installed, you can configure the mod in-game from the Mods screen — no manual file editing needed.
 
-## Requirements
-
-- **Minecraft:** 26.1.x (1.21.x)
-- **Fabric Loader:** ≥ 0.18.5
-- **Fabric API:** Required
-
-### Optional Dependencies
-
-| Mod | Purpose |
-|-----|---------|
-| [Cloth Config](https://modrinth.com/mod/cloth-config) | In-game config screen |
-| [Mod Menu](https://modrinth.com/mod/modmenu) | Access config from the Mods list |
-
-## Installation
-
-1. Install [Fabric Loader](https://fabricmc.net/) and [Fabric API](https://modrinth.com/mod/fabric-api)
-2. Download PickupHighlight from [Modrinth](https://modrinth.com/mod/pickuphighlight) or [CurseForge](https://www.curseforge.com/minecraft/mc-mods/pickuphighlight)
-3. Place the `.jar` file in your `mods` folder
-4. (Optional) Install Cloth Config and Mod Menu for the in-game config screen
-
 ## License
 
 ```bash
