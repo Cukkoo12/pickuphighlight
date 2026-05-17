@@ -1,0 +1,16 @@
+{
+  "pickuphighlight.config.title": "PickupHighlight Config",
+  "pickuphighlight.config.category.general": "General",
+  "pickuphighlight.config.clearOnHover": "Clear on Hover",
+  "pickuphighlight.config.clearOnHover.tooltip": "Removes the highlight when you hover over the item.",
+  "pickuphighlight.config.clearOnClose": "Clear on Inventory Close",
+  "pickuphighlight.config.clearOnClose.tooltip": "Removes all highlights when you close your inventory.",
+  "pickuphighlight.config.clearOnSelect": "Clear on Hotbar Select",
+  "pickuphighlight.config.clearOnSelect.tooltip": "Removes the highlight when you select the item on your hotbar.",
+  "pickuphighlight.config.highlightColor": "Highlight Color",
+  "pickuphighlight.config.highlightColor.tooltip": "RGB color of the sparkle icon (hex integer, default: 0xFFD700 gold).",
+  "pickuphighlight.config.timeoutSeconds": "Timeout (seconds)",
+  "pickuphighlight.config.timeoutSeconds.tooltip": "Automatically clear highlights after this many seconds. 0 = never.",
+  "pickuphighlight.config.showCount": "Show Count Badge",
+  "pickuphighlight.config.showCount.tooltip": "Shows the number of items picked up next to the highlight."
+}

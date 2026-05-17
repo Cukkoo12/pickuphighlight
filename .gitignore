@@ -1,7 +1,13 @@
 # Gradle
 .gradle/
 build/
+neoforge/.gradle/
+neoforge/build/
+forge/.gradle/
+forge/build/
 !gradle/wrapper/gradle-wrapper.jar
+!neoforge/gradle/wrapper/gradle-wrapper.jar
+!forge/gradle/wrapper/gradle-wrapper.jar
 
 # IDE
 .idea/
@@ -19,6 +25,8 @@ Thumbs.db
 
 # Minecraft
 run/
+forge/run/
+neoforge/run/
 logs/
 *.log
 
@@ -26,4 +34,6 @@ logs/
 *.class
 
 # Mod config (generated at runtime)
-config/pickuphighlight.json
+config/
+forge/config/
+neoforge/config/

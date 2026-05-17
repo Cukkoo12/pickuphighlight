@@ -1,0 +1,10 @@
+[[mods]]
+modId="pickuphighlight"
+version="${version}"
+displayName="PickupHighlight"
+logoFile="assets/pickuphighlight/icon.png"
+credits="Cukkoo"
+authors="Cukkoo"
+description='''
+Adds a sparkling highlight animation to newly picked-up items in your inventory and hotbar.
+'''

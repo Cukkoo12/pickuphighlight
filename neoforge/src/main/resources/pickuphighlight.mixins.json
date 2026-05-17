@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "com.cukkoo.pickuphighlight.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [],
+  "client": [
+    "AbstractContainerScreenMixin",
+    "GuiMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
